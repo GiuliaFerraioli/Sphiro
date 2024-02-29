@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class BagController : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 8f;
     public float screenPadding = 0.1f;
-
+    
     private float _xMin, _xMax, _horizontalInput;
     private Camera _mainCamera;
     
@@ -18,7 +19,8 @@ public class BagController : MonoBehaviour
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         //keep bag position within screen
-        var newPosition = Mathf.Clamp(transform.position.x + _horizontalInput * speed * Time.deltaTime, _xMin, _xMax); 
+        var targetPosition = Mathf.Clamp(transform.position.x + _horizontalInput * speed * Time.deltaTime, _xMin, _xMax);
+        var newPosition = Mathf.Lerp(transform.position.x, targetPosition, 1);
         transform.position = new Vector2(newPosition, transform.position.y);
     }
 
