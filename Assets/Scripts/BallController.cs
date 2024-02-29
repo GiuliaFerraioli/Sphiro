@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    
     private const float BAG_MARGIN = 0.1f;
     private LivesManager _livesManager;
 
@@ -20,16 +18,15 @@ public class BallController : MonoBehaviour
             {
                 if (CompareTag("YellowBall"))
                 {
-                    Debug.Log("point");
+                    _livesManager.IncreasePoints();
                 }
-            } 
-            
+            }
+
+
             //if the violet ball touches any part of the bag we remove points
             if (CompareTag("VioletBall"))
             {
                 _livesManager.UpdateLives();
-                Debug.Log("point lost");
-
             }
         }
 
