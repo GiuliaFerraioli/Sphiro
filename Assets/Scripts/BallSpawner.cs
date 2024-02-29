@@ -11,7 +11,7 @@ public class BallSpawner : MonoBehaviour
     private Camera _mainCamera;
     private float _leftBound, _rightBound, _topBound, _ballSize;
     private float _spawnTimer;
-    private float _spawnInterval = 0.9f;
+    private float _spawnInterval = 1.5f;
     //rate to decrease the spawn interval
     private float _difficultyIncreaseRate = 0.01f;
 
@@ -45,10 +45,23 @@ public class BallSpawner : MonoBehaviour
 
     private void SpawnBall()
     {
+        #region randomSpawn 
+
         GameObject ballPrefab = Random.Range(0f, 1f) > 0.5f ? yellowBall : violetBall;
         //spawn ball preventing to go outside screen
         var spawnPos = new Vector2(Random.Range(_leftBound + _ballSize / 2, _rightBound - _ballSize / 2),
             _topBound+0.6f);
-        Instantiate(ballPrefab, spawnPos, Quaternion.identity);
+        var spwnedBall = Instantiate(ballPrefab, spawnPos, Quaternion.identity);
+
+        #endregion
+
+        #region randomSpeed
+
+        var ballRb = spwnedBall.GetComponent<Rigidbody2D>();
+        ballRb.gravityScale = Random.Range(0.5f, 1.0f); 
+
+
+        #endregion
+        
     }
 }
