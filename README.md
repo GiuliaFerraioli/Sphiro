@@ -1,1 +1,2 @@
-Simple game in 2D made in Unity, where user can use the keyboard to move the bag left and right and collect the right coloured balls falling from the sky.
+# Sphiro
+A simple 2D game made in Unity where players control a bag using the keyboard to move left and right, catching falling balls of the correct color while avoiding the wrong ones.
